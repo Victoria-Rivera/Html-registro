@@ -21,7 +21,10 @@
                 let caja_error = document.getElementById("mensaje_nombre");
                 caja_error.innerHTML = "El nombre ingresado no es válido";
             }
-        }
+            if (!validar_run(run)) {
+                let caja_error = document.getElementById("mensaje_run");
+                caja_error.innerHTML = "El RUN ingresado no es válido";
+        }}
 
         // quiero validar que el nombre no venga en blanco 
         // que tenga al menos largo 3 

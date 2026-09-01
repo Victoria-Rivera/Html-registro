@@ -4,12 +4,10 @@
   <meta charset="utf-8">
   <title>Registro</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="estilo.css">
+  <link rel="stylesheet" href="css/estilo.css">
 
   <script>
         function procesar() {
-            // voy a colocar una bandera para ver en la consola
-            // como voy avanzando.
             console.log("-- funcion procesar --");
             const formulario = document.getElementById("form_chileno");
             const datos_formulario = new FormData(formulario);
@@ -26,18 +24,14 @@
                 caja_error.innerHTML = "El RUN ingresado no es válido";
         }}
 
-        // quiero validar que el nombre no venga en blanco 
-        // que tenga al menos largo 3 
-        // y que no sea un número.
         function validar_nombre(nombre_ingresado) {
             console.log("-- funcion validar nombre --");
-            nombre_ingresado = nombre_ingresado.trim(); // borra los espacios
+            nombre_ingresado = nombre_ingresado.trim();
             var valido = (nombre_ingresado.length > 2);
             valido = valido && isNaN(nombre_ingresado);
             return valido;
         }
 
-        // funcion que limpia todos los errores.
         function limpiar_errores() {
             console.log("-- funcion limpiar errores --");
             const lista_errores = document.getElementsByClassName("mensaje_error");
@@ -94,7 +88,7 @@
  <p>Esta página contiene un formulario típico chileno.</p>
     <div id="contenedor_formulario">
         <form id="form_chileno">
-            <fieldset> <!-- me dibuja una cajita en el formulario -->
+            <fieldset> 
                 <legend>Formulario Típico Chileno</legend>
                 <label for="campo_run">RUN:</label>
                 <input type="text" name="campo_run" id="campo_run" placeholder="12.345.678-9">

@@ -2,14 +2,109 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>HTML</title>
+  <title>Registro</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="estilo.css">
+
+  <script>
+        function procesar() {
+            // voy a colocar una bandera para ver en la consola
+            // como voy avanzando.
+            console.log("-- funcion procesar --");
+            const formulario = document.getElementById("form_chileno");
+            const datos_formulario = new FormData(formulario);
+            var nombre = datos_formulario.get("campo_nombre");
+            var run = datos_formulario.get("campo_run");
+            console.log("nombre = " + nombre);
+            console.log("run = " + run);
+            if (!validar_nombre(nombre)) {
+                let caja_error = document.getElementById("mensaje_nombre");
+                caja_error.innerHTML = "El nombre ingresado no es válido";
+            }
+        }
+
+        // quiero validar que el nombre no venga en blanco 
+        // que tenga al menos largo 3 
+        // y que no sea un número.
+        function validar_nombre(nombre_ingresado) {
+            console.log("-- funcion validar nombre --");
+            nombre_ingresado = nombre_ingresado.trim(); // borra los espacios
+            var valido = (nombre_ingresado.length > 2);
+            valido = valido && isNaN(nombre_ingresado);
+            return valido;
+        }
+
+        // funcion que limpia todos los errores.
+        function limpiar_errores() {
+            console.log("-- funcion limpiar errores --");
+            const lista_errores = document.getElementsByClassName("mensaje_error");
+            for (const elemento of lista_errores) {
+                elemento.innerHTML = "";
+            }
+        }
+
+        function validar_run(rutCompleto) {
+            // 1. Limpiar el RUT de puntos y espacios
+            rutCompleto = rutCompleto.replace(/^0+|[\s.]+/g, '');
+
+            // 2. Verificar que tenga el formato básico con expresión regular
+            if (!/^[0-9]+[-|‐]{1}[0-9kK]{1}$/.test(rutCompleto)) return false;
+
+            // 3. Separar el número del dígito verificador
+            const tmp = rutCompleto.split('-');
+            let digv = tmp[1];
+            const rut = tmp[0];
+
+            // Pasar a minúscula si el dígito verificador es 'K'
+            if (digv == 'K') digv = 'k';
+
+            // 4. Calcular el dígito verificador esperado
+            return calcular_dv(rut) == digv;
+        }
+
+        function calcular_dv(T) {
+            let suma = 0;
+            let multiplicador = 2;
+
+            // Recorrer los números de derecha a izquierda
+            for (let i = 1; i <= T.length; i++) {
+                suma += parseInt(T.charAt(T.length - i)) * multiplicador;
+                multiplicador = multiplicador < 7 ? multiplicador + 1 : 2;
+            }
+
+            const resto = suma % 11;
+            const dvCalculado = 11 - resto;
+
+            if (dvCalculado == 11) return '0';
+            if (dvCalculado == 10) return 'k';
+            return dvCalculado.toString();
+        }
+
+
+
+    </script>
 </head>
  
 <body>
-  <p>Esta página web es una página HTML válida.</p>
-  <p>Creacion primera para verificar que funciona el git hub</p>
-  <p>Problemas de compatibilidad</p>
+ <p>Esta es la pagina de registro</p>
+ <p>Ingrese sus datos de forma correcta</p>
+ <p>Esta página contiene un formulario típico chileno.</p>
+    <div id="contenedor_formulario">
+        <form id="form_chileno">
+            <fieldset> <!-- me dibuja una cajita en el formulario -->
+                <legend>Formulario Típico Chileno</legend>
+                <label for="campo_run">RUN:</label>
+                <input type="text" name="campo_run" id="campo_run" placeholder="12.345.678-9">
+                <span class="mensaje_error" id="mensaje_run"></span>
+                <br>
+                <label for="campo_nombre">Nombre:</label>
+                <input type="text" name="campo_nombre" id="campo_nombre" placeholder="(ej: Juan López)">
+                <span class="mensaje_error" id="mensaje_nombre"></span>
+                <br>
+                <button type="reset">Limpiar</button>
+                <button type="button" onclick="procesar()">Procesar</button>
+            </fieldset>
+        </form>
+    </div>
 </body>
 </html>

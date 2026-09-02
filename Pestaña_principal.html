@@ -8,21 +8,36 @@
 
   <script>
         function procesar() {
+
+            limpiar_errores()
+
             console.log("-- funcion procesar --");
             const formulario = document.getElementById("form_chileno");
             const datos_formulario = new FormData(formulario);
             var nombre = datos_formulario.get("campo_nombre");
             var run = datos_formulario.get("campo_run");
+
             console.log("nombre = " + nombre);
             console.log("run = " + run);
+
+            error = false
+
             if (!validar_nombre(nombre)) {
                 let caja_error = document.getElementById("mensaje_nombre");
                 caja_error.innerHTML = "El nombre ingresado no es válido";
+                error = true;
             }
             if (!validar_run(run)) {
                 let caja_error = document.getElementById("mensaje_run");
                 caja_error.innerHTML = "El RUN ingresado no es válido";
-        }}
+                error = true;
+            }
+            if (!error){
+                let caja_exito = document.getElementById("mensaje_exito")
+                caja_exito.innerHTML = "Los datos fueron ingresados correctamente"
+            }
+
+        }
 
         function validar_nombre(nombre_ingresado) {
             console.log("-- funcion validar nombre --");
@@ -83,6 +98,9 @@
 </head>
  
 <body>
+ <div id="contenedor_banner">
+    <img src="Imagenes/Banner.JPG" alt=""Este mensaje sale si hay un error con la imagen>
+ </div>
  <p>Esta es la pagina de registro</p>
  <p>Ingrese sus datos de forma correcta</p>
  <p>Esta página contiene un formulario típico chileno.</p>
@@ -98,6 +116,7 @@
                 <input type="text" name="campo_nombre" id="campo_nombre" placeholder="(ej: Juan López)">
                 <span class="mensaje_error" id="mensaje_nombre"></span>
                 <br>
+                <p id="mensaje_exito" class="mensaje_exito"></p>
                 <button type="reset">Limpiar</button>
                 <button type="button" onclick="procesar()">Procesar</button>
             </fieldset>

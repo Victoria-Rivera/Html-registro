@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>Registro</title>
+  <title>Lart_duniss-Pagina principal</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/estilo.css">
 
@@ -34,7 +34,7 @@
             }
             if (!error){
                 let caja_exito = document.getElementById("mensaje_exito")
-                caja_exito.innerHTML = "Los datos fueron ingresados correctamente"
+                caja_exito.innerHTML = "¡Los datos fueron ingresados correctamente!"
             }
 
         }
@@ -99,21 +99,33 @@
  
 <body>
  <div id="contenedor_banner">
-    <img src="Imagenes/Banner.JPG" alt=""Este mensaje sale si hay un error con la imagen>
+    <img src="Imagenes/Banner.jpg" alt=""Este mensaje sale si hay un error con la imagen>
  </div>
+ <header>
+    <h1>
+        Lart_duniss
+    </h1>
+    <p>
+        Pagina principal de registro de cliente
+    </p>
+ </header>
+ <h2>
+    Contenidos menu
+ </h2>
+    
  <p>Esta es la pagina de registro, por el momento se ve bastante mal pero vamos lento pero seguro confia confia</p>
- <p>Ingrese sus datos de forma correctam no se equivoquen o les va a salir una carita enojada, osea no por ahora porque, aun no lo programo, pero esta en los archivos</p>
- <p>Esta página contiene un formulario típico chileno.</p>
+ <p>Ingrese sus datos de forma correctam no se equivoquen o les va a salir una carita enojada, osea no por ahora porque, aun no lo programo, pero esta en los archivos, si es que logran encontrarlos aunque lo dudo es interesante ver si alguien lo llega a encontrar</p>
+ <p>Esta página contiene un ejemplo de formulario de cliente.</p>
     <div id="contenedor_formulario">
         <form id="form_chileno">
             <fieldset> 
-                <legend>Formulario Típico Chileno</legend>
+                <legend>Formulario cliente</legend>
                 <label for="campo_run">RUN:</label>
                 <input type="text" name="campo_run" id="campo_run" placeholder="12.345.678-9">
                 <span class="mensaje_error" id="mensaje_run"></span>
                 <br>
                 <label for="campo_nombre">Nombre:</label>
-                <input type="text" name="campo_nombre" id="campo_nombre" placeholder="(ej: Juan López)">
+                <input type="text" name="campo_nombre" id="campo_nombre" placeholder="(ej: Nombre Apellido)">
                 <span class="mensaje_error" id="mensaje_nombre"></span>
                 <br>
                 <p id="mensaje_exito" class="mensaje_exito"></p>
@@ -122,5 +134,8 @@
             </fieldset>
         </form>
     </div>
+    <p>
+        Lorem ipsom lorem ipsum
+    </p>
 </body>
 </html>

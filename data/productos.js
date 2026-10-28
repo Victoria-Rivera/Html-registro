@@ -1,0 +1,222 @@
+const productos = [
+    {
+        id: 1,
+        imagen: "https://via.placeholder.com/400x300",
+        nombre: "Galletas Decoradas de Mantequilla",
+        categoria: "Galletas",
+        descripcion: "Deliciosas galletas artesanales decoradas con glaseado real.",
+        precio_descuento: 6999,
+        precio_nuevo: 5999,
+        stock: 19,
+        link: "/productos/producto1.html"
+    },
+    {
+        id: 2,
+        imagen: "https://via.placeholder.com/400x300",
+        nombre: "Cake Popsicles de Chocolate",
+        categoria: "Cake Popsicles",
+        descripcion: "Paletas de pastel de chocolate cubiertas con chocolate belga.",
+        precio_descuento: 5999,
+        precio_nuevo: 4999,
+        stock: 17,
+        link: "/productos/producto1.html"
+    },
+    {
+        id: 3,
+        imagen: "https://via.placeholder.com/400x300",
+        nombre: "Cupcakes Red Velvet",
+        categoria: "Cupcakes",
+        descripcion: "Suaves pastelitos Red Velvet con frosting de queso crema.",
+        precio_descuento: 2999,
+        precio_nuevo: 2695,
+        stock: 13,
+        link: "/productos/producto1.html"
+    },
+    {
+        id: 4,
+        imagen: "https://via.placeholder.com/400x300",
+        nombre: "Galletas de Avena y Pasas",
+        categoria: "Galletas",
+        descripcion: "Galletas rústicas horneadas al día con un toque de canela.",
+        precio_descuento: 999,
+        precio_nuevo: 0,
+        stock: 10,
+        link: "/productos/producto1.html"
+    },
+    {
+        id: 5,
+        imagen: "https://via.placeholder.com/400x300",
+        nombre: "Cupcakes de Vainilla Clásicos",
+        categoria: "Cupcakes",
+        descripcion: "Esponjosos cupcakes de vainilla con crema de mantequilla.",
+        precio_descuento: 2999,
+        precio_nuevo: 1999,
+        stock: 18,
+        link: "/productos/producto1.html"
+    },
+    {
+        id: 6,
+        imagen: "https://via.placeholder.com/400x300",
+        nombre: "Cake Popsicles de Frutos Rojos",
+        categoria: "Cake Popsicles",
+        descripcion: "Paletas de bizcocho con centro de mermelada y cobertura rosa.",
+        precio_descuento: 6999,
+        precio_nuevo: 5999,
+        stock: 20,
+        link: "/productos/producto1.html"
+    },
+    {
+        id: 7,
+        imagen: "https://via.placeholder.com/400x300",
+        nombre: "Mini Galletas Chispas de Chocolate",
+        categoria: "Galletas",
+        descripcion: "Bolsita de crujientes galletas miniatura con trozos de chocolate.",
+        precio_descuento: 699,
+        precio_nuevo: 499,
+        stock: 30,
+        link: "/productos/producto1.html"
+    },
+    {
+        id: 8,
+        imagen: "https://via.placeholder.com/400x300",
+        nombre: "Cupcakes de Doble Chocolate",
+        categoria: "Cupcakes",
+        descripcion: "Intensos cupcakes de chocolate rellenos de fudge.",
+        precio_descuento: 4999,
+        precio_nuevo: 3999,
+        stock: 12,
+        link: "/productos/producto1.html"
+    },
+    {
+        id: 9,
+        imagen: "https://via.placeholder.com/400x300",
+        nombre: "Cake Popsicles de Maracuyá",
+        categoria: "Cake Popsicles",
+        descripcion: "Exóticas paletas de pastel con cobertura de chocolate blanco y maracuyá.",
+        precio_descuento: 6999,
+        precio_nuevo: 5999,
+        stock: 7,
+        link: "/productos/producto1.html"
+    },
+    {
+        id: 10,
+        imagen: "https://via.placeholder.com/400x300",
+        nombre: "Galletas Mini de Cortesía",
+        categoria: "Galletas",
+        descripcion: "Pequeña muestra de galletas de mantequilla para degustación.",
+        precio_descuento: 1999,
+        precio_nuevo: 0,
+        stock: 5,
+        link: "/productos/producto1.html"
+    },
+    {
+        id: 11,
+        imagen: "https://via.placeholder.com/400x300",
+        nombre: "Galletas Rellenas de Manjar",
+        categoria: "Galletas",
+        descripcion: "Alfajorcitos artesanales espolvoreados con azúcar flor.",
+        precio_descuento: 1999,
+        precio_nuevo: 1499,
+        stock: 24,
+        link: "/productos/producto1.html"
+    },
+    {
+        id: 12,
+        imagen: "https://via.placeholder.com/400x300",
+        nombre: "Cupcakes de Limón y Merengue",
+        categoria: "Cupcakes",
+        descripcion: "Cupcakes cítricos con copete de merengue italiano tostado.",
+        precio_descuento: 6999,
+        precio_nuevo: 5999,
+        stock: 14,
+        link: "/productos/producto1.html"
+    },
+    {
+        id: 13,
+        imagen: "https://via.placeholder.com/400x300",
+        nombre: "Caja Surtida de Galletas",
+        categoria: "Galletas",
+        descripcion: "Selección especial de nuestras mejores galletas de la casa.",
+        precio_descuento: 5999,
+        precio_nuevo: 4999,
+        stock: 2,
+        link: "/productos/producto1.html"
+    },
+    {
+        id: 14,
+        imagen: "https://via.placeholder.com/400x300",
+        nombre: "Cake Popsicles de Cookies & Cream",
+        categoria: "Cake Popsicles",
+        descripcion: "Bizcocho de galleta oreo bañado en chocolate blanco triturado.",
+        precio_descuento: 6999,
+        precio_nuevo: 5999,
+        stock: 10,
+        link: "/productos/producto1.html"
+    },
+    {
+        id: 15,
+        imagen: "https://via.placeholder.com/400x300",
+        nombre: "Cupcakes de Zanahoria y Nuez",
+        categoria: "Cupcakes",
+        descripcion: "Esponjosos cupcakes especiados con frosting de queso crema.",
+        precio_descuento: 4999,
+        precio_nuevo: 3999,
+        stock: 12,
+        link: "/productos/producto1.html"
+    },
+    {
+        id: 16,
+        imagen: "https://via.placeholder.com/400x300",
+        nombre: "Torre de Cake Popsicles (Pack 6)",
+        categoria: "Cake Popsicles",
+        descripcion: "Hermoso arreglo de 6 paletas de pastel surtidas para regalo.",
+        precio_descuento: 6999,
+        precio_nuevo: 5999,
+        stock: 100,
+        link: "/productos/producto1.html"
+    },
+    {
+        id: 17,
+        imagen: "https://via.placeholder.com/400x300",
+        nombre: "Galletas de Jengibre Estilizadas",
+        categoria: "Galletas",
+        descripcion: "Galletas artesanales crujientes con jengibre y especias.",
+        precio_descuento: 2999,
+        precio_nuevo: 1999,
+        stock: 3,
+        link: "/productos/producto1.html"
+    },
+    {
+        id: 18,
+        imagen: "https://via.placeholder.com/400x300",
+        nombre: "Cupcakes de Lúcuma y Manjar",
+        categoria: "Cupcakes",
+        descripcion: "Sabor tradicional chileno en un cupcake suave y relleno.",
+        precio_descuento: 4999,
+        precio_nuevo: 3999,
+        stock: 12,
+        link: "/productos/producto1.html"
+    },
+    {
+        id: 19,
+        imagen: "https://via.placeholder.com/400x300",
+        nombre: "Caja Regalo Cupcakes (Pack 4)",
+        categoria: "Cupcakes",
+        descripcion: "Hermosa caja decorada con 4 cupcakes variados del día.",
+        precio_descuento: 6999,
+        precio_nuevo: 5999,
+        stock: 10,
+        link: "/productos/producto1.html"
+    },
+    {
+        id: 20,
+        imagen: "https://via.placeholder.com/400x300",
+        nombre: "Cake Popsicles de Manjar y Nuez",
+        categoria: "Cake Popsicles",
+        descripcion: "Paletas de bizcocho de nuez con centro cremoso de manjar.",
+        precio_descuento: 6999,
+        precio_nuevo: 5999,
+        stock: 5,
+        link: "/productos/producto1.html"
+    }
+];

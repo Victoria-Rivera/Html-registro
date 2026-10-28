@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lart_duniss - Categorías</title>
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            background: #fff5f8;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .navbar {
+            background-color: #ffffff !important;
+            box-shadow: 0 2px 8px rgba(214, 51, 132, 0.08);
+        }
+
+        .card-producto {
+            background-color: #ffffff;
+            border: 1px solid #f8d7da;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+            border-radius: 15px;
+            transition: transform 0.2s;
+        }
+
+        .card-producto:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(214, 51, 132, 0.12);
+        }
+
+        .card-title {
+            font-weight: bold;
+            color: #b02a65;
+        }
+
+        .precio-descuento {
+            color: #adb5bd;
+            font-size: 0.9rem;
+        }
+
+        .precio-nuevo {
+            color: #d63384;
+            font-size: 1.2rem;
+        }
+
+        h2, h3 {
+            color: #b02a65;
+            font-weight: bold;
+        }
+
+        .btn-filtro {
+            border-color: #e83e8c;
+            color: #e83e8c;
+        }
+
+        .btn-filtro:hover, .btn-filtro.active {
+            background-color: #e83e8c;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar Superior -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="https://via.placeholder.com/40" alt="Logo" class="d-inline-block align-text-top rounded-circle me-2">
+                <strong style="color: #b02a65;">Lart_duniss</strong>
+            </a>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarTopContent">
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Buscar delicias..." aria-label="Buscar">
+                    <button class="btn btn-outline-danger" type="submit">Buscar</button>
+                </form>
+            </div>
+            <div class="d-flex align-items-center">
+                <a href="iniciar-sesion.html" class="btn btn-outline-danger ms-2">Iniciar Sesión</a>
+                <a href="crear-sesion.html" class="btn btn-danger ms-2" style="background-color: #e83e8c; border-color: #e83e8c;">Crear Cuenta</a>
+                <a href="carrito.html" class="btn btn-success ms-3">
+                    <i class="bi bi-cart4"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido de Categorías -->
+    <div class="container my-5">
+        <div class="text-center mb-5">
+            <h2>Explora Nuestras Categorías</h2>
+            <p class="text-muted">Filtra por tu tipo de repostería favorita</p>
+            
+            <!-- Botones de Filtrado -->
+            <div class="btn-group mt-3" role="group">
+                <button type="button" class="btn btn-filtro active" onclick="filtrarProductos('Todos')">Todas</button>
+                <button type="button" class="btn btn-filtro" onclick="filtrarProductos('Galletas')">Galletas</button>
+                <button type="button" class="btn btn-filtro" onclick="filtrarProductos('Cake Popsicles')">Cake Popsicles</button>
+                <button type="button" class="btn btn-filtro" onclick="filtrarProductos('Cupcakes')">Cupcakes</button>
+            </div>
+        </div>
+
+        <!-- Listado de Productos -->
+        <div class="row row-cols-1 row-cols-md-4 g-4" id="category-product-list">
+            <!-- Generado dinámicamente -->
+        </div>
+    </div>
+
+    <!-- Scripts Bootstrap y Datos -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="data/productos.js"></script>
+
+    <script>
+        // Función para renderizar productos con opción de filtro
+        function mostrarProductos(categoriaFiltro = 'Todos') {
+            const productList = document.getElementById('category-product-list');
+            if (!productList || typeof productos === 'undefined') return;
+
+            productList.innerHTML = '';
+
+            const productosFiltrados = categoriaFiltro === 'Todos' 
+                ? productos 
+                : productos.filter(p => p.categoria === categoriaFiltro);
+
+            if (productosFiltrados.length === 0) {
+                productList.innerHTML = `<div class="col-12 text-center text-muted py-4">No hay productos en esta categoría por el momento.</div>`;
+                return;
+            }
+
+            productosFiltrados.forEach(item => {
+                const productCard = `
+                    <div class="col">
+                        <div class="card card-producto h-100 p-2">
+                            <img src="${item.imagen}" class="card-img-top rounded" alt="${item.nombre}" style="height: 180px; object-fit: cover;">
+                            <div class="card-body d-flex flex-column justify-content-between">
+                                <div>
+                                    <span class="badge bg-light text-dark mb-2">${item.categoria}</span>
+                                    <h5 class="card-title fs-6">${item.nombre}</h5>
+                                    <p class="text-muted small mb-2">${item.descripcion}</p>
+                                </div>
+                                <div>
+                                    <div class="d-flex flex-column mb-3">
+                                        <span class="precio-descuento text-decoration-line-through">$${item.precio_descuento}</span>
+                                        <span class="precio-nuevo fw-bolder">$${item.precio_nuevo}</span>
+                                    </div>
+                                    <div class="d-grid gap-2">
+                                        <button class="btn btn-sm btn-outline-danger" onclick="window.location='productos/producto1.html'">Ver Detalle</button>
+                                        <button class="btn btn-sm btn-success" onclick="addToCart(${item.id})">
+                                            <i class="bi bi-cart-plus"></i> Añadir
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                productList.innerHTML += productCard;
+            });
+        }
+
+        function filtrarProductos(categoria) {
+            // Cambiar clase activa en los botones
+            document.querySelectorAll('.btn-filtro').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            mostrarProductos(categoria);
+        }
+
+        // Cargar todos al iniciar
+        document.addEventListener('DOMContentLoaded', () => {
+            mostrarProductos('Todos');
+        });
+
+        function addToCart(id) {
+            if (typeof productos === 'undefined') return;
+            const product = productos.find(p => p.id === id);
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const existingProduct = cart.find(item => item.id === id);
+
+            if (existingProduct) {
+                if (existingProduct.quantity < product.stock) {
+                    existingProduct.quantity++;
+                } else {
+                    alert(`No hay suficiente stock disponible de ${product.nombre}.`);
+                }
+            } else {
+                if (product.stock > 0) {
+                    cart.push({ ...product, quantity: 1 });
+                } else {
+                    alert(`Lo sentimos, ${product.nombre} está agotado.`);
+                }
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`¡Se añadió "${product.nombre}" al carrito! 🛒`);
+        }
+    </script>
+</body>
+</html>

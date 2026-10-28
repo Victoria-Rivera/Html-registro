@@ -6,7 +6,7 @@ const productos = [
         categoria: "Galletas",
         descripcion: "Deliciosas galletas artesanales decoradas con glaseado real.",
         precio_descuento: 6999,
-        precio_nuevo: 5999,
+        precio_nuevo: 300,
         stock: 19,
         link: "/productos/producto1.html"
     },
